@@ -1,24 +1,21 @@
 import { render } from '@czechitas/render';
+import { City } from '../components/City/City';
+import { cities } from './data';
 import '../global.css';
 import './index.css';
-
-const cities = [
-  'Praha',
-  'Brno',
-  'Ostrava',
-  'Plzeň',
-  'Liberec',
-  'Olomouc',
-  'České Budějovice',
-  'Hradec Králové',
-  'Ústí nad Labem',
-  'Pardubice',
-];
-
-// const cityElements = cities.map((city) => <div className="city">{city}</div>)
+import '../components/City/City.css'
 
 document.querySelector('#root').innerHTML = render(
   <div className="container">
-    {cities.map((city) => <div key={city} className="city">{city}</div>)}
+    {cities.map(({name, population, area}) => (
+      <City name={name} population={population} area={area}/>
+    ))}
   </div>
 );
+
+// cities.map(({name, population, area}) => {
+//   const {name, population, area} = city
+//   return (
+//     <City name={name} population={population} area={area}/>
+//   )
+// })
